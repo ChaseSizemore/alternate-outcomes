@@ -1,8 +1,5 @@
+import Main from '@/components/Main';
 
 export default function Home() {
-  return (
-    <main>
-      test
-    </main>
-  )
+  return <Main />;
 }
