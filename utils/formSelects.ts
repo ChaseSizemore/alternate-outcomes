@@ -4,4 +4,7 @@ const states: string[] = ['Remote','AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE
 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 
 'WI', 'WY']
 
-export {states};
+const bootcamps: string[] = ['App Academy', 'BrainStation', 'CareerFoundry', 'Codesmith',
+'Flatiron School', 'Fullstack Academy', 'Galvanize', 'Springboard', 'Thinkful', 'Turing School of Software & Design']
+
+export {states, bootcamps};

@@ -11,9 +11,9 @@ export default function Outcomes() {
   const getData = async () => {
     await fetch('/api/outcomes')
       .then((res) => res.json())
-      .then((data) => setOutcomes(data))
-      .then(() => console.log(outcomes))
-      .catch((err) => console.log(err));
+      .then((data) => {
+        setOutcomes(data);
+      });
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function Outcomes() {
 
   return (
     <div className="m-20">
-      <div className='pb-20 text-center'>
+      <div className="pb-20 text-center">
         <h1 className="text-base font-semibold leading-7 text-gray-900">
           Bootcamp Outcomes
         </h1>
@@ -30,7 +30,7 @@ export default function Outcomes() {
           Checkout Self Reported Bootcamp Outcomes!
         </p>
       </div>
-      <Table outcomes={dummyData} />
+      {/* <Table outcomes={dummyData} /> */}
     </div>
   );
 }
