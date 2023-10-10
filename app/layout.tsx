@@ -4,6 +4,7 @@ import { Inter, Lexend } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import clsx from 'clsx'
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -40,6 +41,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         {/* <Footer /> */}
+        <Analytics />
       </body>
     </html>
   )
