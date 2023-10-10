@@ -50,8 +50,8 @@ export function Button<
 
   className = clsx(
     baseStyles[variant],
-    variantStyles[variant][color],
-    className,
+    variantStyles[variant][color] as string,
+    className as string,
   )
 
   return typeof props.href === 'undefined' ? (
