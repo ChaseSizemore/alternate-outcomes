@@ -52,10 +52,10 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        {/* <Footer /> */}
-        <Analytics />
+          <Navbar />
+          {children}
+          {/* <Footer /> */}
+          <Analytics />
       </body>
     </html>
   );

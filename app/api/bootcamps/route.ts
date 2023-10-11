@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { db } from '@/utils/firestore';
-import { getDocs, collection, addDoc, doc } from '@firebase/firestore';
+import { getDocs, collection, addDoc, doc, query, where } from '@firebase/firestore';
+import { get } from 'http';
 
 export const GET = async (req: Request, res: Response) => {};
 
@@ -10,13 +11,19 @@ export const POST = async (req: Request, res: Response) => {
         return NextResponse.json({ error: 'No body provided' }, { status: 400 });
       }
       const data = await streamToJson(req.body);
-      const docRef = await addDoc(collection(db, 'outcomes'), data);
+      
       return NextResponse.json({ message: 'success' });
     } catch (e) {
       console.error('Error adding document: ', e);
       return NextResponse.json({ error: 'An error occurred' }, { status: 500 });
     }
   };
+
+
+
+
+
+
   
   async function streamToJson(stream: ReadableStream): Promise<any> {
     const reader = stream.getReader();
