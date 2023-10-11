@@ -54,7 +54,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
-        <Footer />
+        {/* <Footer /> */}
         <Analytics />
       </body>
     </html>
