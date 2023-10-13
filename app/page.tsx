@@ -15,11 +15,19 @@ export default function Home() {
   });
   const getLatest = async () => {
     await fetch('/api/latestOutcome')
-      .then((res) => res.json())
-      .then((data) => {
-        setLatest(data);
-      });
-  };
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return res.json();
+    })
+    .then((data) => {
+      setLatest(data);
+    })
+    .catch(error => {
+      console.error("There was a problem with the fetch operation:", error.message);
+    });
+  
 
   useEffect(() => {
     getLatest();
