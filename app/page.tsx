@@ -23,7 +23,9 @@ export default function Home() {
 
   useEffect(() => {
     getLatest();
+    console.log('grabbing latest outcome')
   }, []);
+
   return (
     <div className="pb-16 pt-20 lg:pt-32">
       <div className="text-center">

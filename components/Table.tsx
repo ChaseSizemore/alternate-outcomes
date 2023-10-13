@@ -42,7 +42,7 @@ const columns: readonly Column[] = [
 export default function StickyHeadTable({ outcomes }: any) {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const rows = dummyData;
+  const rows = outcomes;
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
