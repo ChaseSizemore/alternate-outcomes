@@ -16,11 +16,12 @@ function InfoItem({ title, value }: InfoItemProps) {
 
 export default function Example({ latest }: any) {
   return (
-    <dl className="mx-auto grid grid-cols-1 gap-px  sm:grid-cols-2 lg:grid-cols-4">
+    <dl className="mx-3/4 grid grid-cols-1 gap-px  sm:grid-cols-2 lg:grid-cols-4">
       <InfoItem title="Bootcamp" value={latest.bootcamp} />
       <InfoItem title="Company" value={latest.company} />
       <InfoItem title="Position" value={latest.position} />
-      <InfoItem title="Salary" value={latest.salary} />
+      <InfoItem title="Salary" value={parseInt(latest.salary, 10).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })} />
     </dl>
   );
 }
+

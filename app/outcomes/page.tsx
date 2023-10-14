@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import Table from '@/components/Table';
 
 export default function Outcomes() {
@@ -10,13 +10,24 @@ export default function Outcomes() {
     await fetch('/api/outcomes')
       .then((res) => res.json())
       .then((data) => {
-        setOutcomes(data);
+        const formattedData = data.map((item: any) => {
+          return {
+            ...item,
+            salary: parseInt(item.salary, 10).toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 })
+          }
+        });
+        setOutcomes(formattedData);
       });
   };
 
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    console.log(outcomes);
+  }
+    , [outcomes]);
 
   return (
     <>

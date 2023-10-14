@@ -55,22 +55,20 @@ export default function Contribute() {
     axios
       .post('/api/outcomes', requestBody)
       .then((res) => {
-        console.log(res);
+        if (res.status === 200 || res.status === 304) {
+          window.location.replace('/outcomes');
+        }
       })
       .catch((err) => {
         console.log(err);
       });
-      axios.post('/api/bootcamps', requestBody)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const resetForm = () => {
-    window.location.reload();
+    // axios.post('/api/bootcamps', requestBody)
+    // .then((res) => {
+    //   console.log(res);
+    // })
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   const handleSalaryChange = (e: any) => {
@@ -212,12 +210,12 @@ export default function Contribute() {
           <Button variant="outlined" onClick={handleSubmit}>
             Submit
           </Button>
-          <Button variant="text" onClick={resetForm}>
+          <Button variant="text" onClick={() => {window.location.reload()}}>
             Reset
           </Button>
         </div>
       </Box>
-      <Transition.Root show={open} as={Fragment} >
+      <Transition.Root show={open} as={Fragment}>
         <Dialog
           as="div"
           className="relative z-10"
@@ -264,7 +262,8 @@ export default function Contribute() {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          There appears to be an error! Please resolve all field errors before submitting again.
+                          There appears to be an error! Please resolve all field
+                          errors before submitting again.
                         </p>
                       </div>
                     </div>

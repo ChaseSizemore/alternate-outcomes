@@ -25,7 +25,7 @@ export const POST = async (req: Request, res: Response) => {
     data.createdAt = new Date().toISOString(); // Add date created to data object
     
     const docRef = await addDoc(collection(db, 'outcomes'), data);
-    return NextResponse.json({ message: 'success' });
+    return NextResponse.json({ message: 'success' }, { status: 200 });
   } catch (e) {
     console.error('Error adding document: ', e);
     return NextResponse.json({ error: 'An error occurred' }, { status: 500 });
