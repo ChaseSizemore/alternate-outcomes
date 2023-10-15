@@ -15,7 +15,6 @@ export default function Bootcamp({ params }: any) {
   const [averageSalary, setAverageSalary] = useState('');
   const [companies, setCompanies] = useState<any[]>([]);
   const [locations, setLocations] = useState<any[]>([]);
-  const nameWithSpace = params.name.replace(/-/g, ' ');
 
   const cards = [
     {
@@ -46,7 +45,7 @@ export default function Bootcamp({ params }: any) {
     axios
       .get('/api/bootcamps', {
         params: {
-          name: nameWithSpace,
+          name: params.name.replace(/-/g, ' '),
         },
       })
       .then((res) => {
@@ -76,7 +75,7 @@ export default function Bootcamp({ params }: any) {
       .then((res) => {
         const bootcamp: any = [];
         res.data.forEach((item: any) => {
-          if (item.bootcamp === nameWithSpace) {
+          if (item.bootcamp === params.name.replace(/-/g, ' ')) {
             bootcamp.push(item);
           }
         });
@@ -110,7 +109,7 @@ export default function Bootcamp({ params }: any) {
         <div className="mx-auto max-w-7xl px-6 lg:px- item flex flex-col justify-center items-center">
           <div className="mx-auto max-w-2xl lg:mx-0 flex flex-col justify-center items-center">
             <h2 className="text-4xl font-bold tracking-tigh sm:text-6xl">
-              {nameWithSpace}
+              {params.name.replace(/-/g, ' ')}
             </h2>
             <p className="mx-auto my-6 max-w-2xl text-md tracking-tight text-slate-700 text-center">
               {bootcamp.description}
