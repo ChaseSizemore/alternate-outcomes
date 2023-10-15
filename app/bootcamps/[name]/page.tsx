@@ -11,7 +11,7 @@ import { getAverageSalary } from '@/utils/utilityFunctions';
 
 export default function Bootcamp({ params }: any) {
   const [outcomes, setOutcomes] = useState([]);
-  const [bootcamp, setBootcamp] = useState<any>({});
+  const [bootcamp, setBootcamp] = useState<any>();
   const [averageSalary, setAverageSalary] = useState('');
   const [companies, setCompanies] = useState<any[]>([]);
   const [locations, setLocations] = useState<any[]>([]);
