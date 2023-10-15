@@ -4,7 +4,7 @@ import {
   MapIcon,
   CurrencyDollarIcon,
 } from '@heroicons/react/20/solid';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import Table from '@/components/Table';
 import axios from 'axios';
 
@@ -51,6 +51,11 @@ export default function Bootcamp({ params }: any) {
         setBootcamp(res.data[0]);
       });
   };
+
+  useEffect(() => {
+    console.log(bootcamp)
+    
+  }, [bootcamp])
 
   /**
    * Calculates the average salary from an array of objects containing a salary property.
