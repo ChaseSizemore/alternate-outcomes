@@ -54,7 +54,10 @@ export default function Bootcamp({ params }: any) {
       })
       .catch((err) => {
         console.log(err);
-      });
+      })
+      .finally(() => {
+        console.log('bootcamp data fetched');
+      })
   };
 
   useEffect(() => {
@@ -95,7 +98,7 @@ export default function Bootcamp({ params }: any) {
   useEffect(() => {
     getOutcomes();
     getBootcamp();
-  }, [nameWithSpace]);
+  }, []);
 
   return (
     <div className="relative isolate overflow-hidden py-24 sm:py-32">
