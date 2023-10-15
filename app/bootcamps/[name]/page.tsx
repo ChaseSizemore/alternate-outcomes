@@ -10,7 +10,7 @@ import axios from 'axios';
 import { getAverageSalary } from '@/utils/utilityFunctions';
 
 export default function Bootcamp({ params }: any) {
-  const [outcomes, setOutcomes] = useState([]);
+  const [outcomes, setOutcomes] = useState(null);
   const [bootcamp, setBootcamp] = useState<any>(null);
   const [averageSalary, setAverageSalary] = useState('');
   const [companies, setCompanies] = useState<any[]>([]);
