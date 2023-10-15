@@ -11,4 +11,4 @@ async function streamToJson(stream: ReadableStream): Promise<any> {
 }
 
 
-export default streamToJson;
+export { streamToJson }
