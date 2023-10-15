@@ -80,6 +80,7 @@ export default function Bootcamp({ params }: any) {
             bootcamp.push(item);
           }
         });
+        console.log('outcomes res data', res.data)
         setOutcomes(bootcamp);
         setAverageSalary(getAverageSalary(bootcamp));
       })
