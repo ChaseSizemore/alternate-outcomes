@@ -50,6 +50,7 @@ export default function Bootcamp({ params }: any) {
         },
       })
       .then((res) => {
+        console.log('res.data', res.data)
         setBootcamp(res.data[0]);
       })
       .catch((err) => {
