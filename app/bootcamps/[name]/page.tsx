@@ -8,9 +8,11 @@ import { use, useEffect, useState } from 'react';
 import Table from '@/components/Table';
 import axios from 'axios';
 import { getAverageSalary } from '@/utils/utilityFunctions';
+import ErrorBarWithActions from '@/components/ErrorBarWithActions';
+import LinearProgress from '@mui/material/LinearProgress';
 
 export default function Bootcamp({ params }: any) {
-  const [outcomes, setOutcomes] = useState(null);
+  const [outcomes, setOutcomes] = useState<any[] | null>(null);
   const [bootcamp, setBootcamp] = useState<any>(null);
   const [averageSalary, setAverageSalary] = useState('');
   const [companies, setCompanies] = useState<any[]>([]);
@@ -42,6 +44,7 @@ export default function Bootcamp({ params }: any) {
    */
   const getBootcamp = async () => {
     console.log('in bootcamp function');
+    console.log(params.name.replace(/-/g, ' '));
     axios
       .get('/api/bootcamps', {
         params: {
@@ -49,7 +52,7 @@ export default function Bootcamp({ params }: any) {
         },
       })
       .then((res) => {
-        console.log('res.data', res.data)
+        console.log('res.data', res.data);
         setBootcamp(res.data[0]);
       })
       .catch((err) => {
@@ -79,7 +82,7 @@ export default function Bootcamp({ params }: any) {
             bootcamp.push(item);
           }
         });
-        console.log('outcomes res data', res.data)
+        console.log('outcomes res data', res.data);
         setOutcomes(bootcamp);
         setAverageSalary(getAverageSalary(bootcamp));
       })
@@ -101,15 +104,21 @@ export default function Bootcamp({ params }: any) {
     getBootcamp();
   }, []);
 
+  useEffect(() => {
+    console.log('outcomes', outcomes);
+  }, [outcomes]);
+
   if (!bootcamp || !outcomes) {
-    return <div>Loading...</div>;
+    return <LinearProgress/>;
   } else {
     return (
       <div className="relative isolate overflow-hidden py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px- item flex flex-col justify-center items-center">
           <div className="mx-auto max-w-2xl lg:mx-0 flex flex-col justify-center items-center">
             <h2 className="text-4xl font-bold tracking-tigh sm:text-6xl">
-              {params.name.replace(/-/g, ' ')}
+              {params.name
+                .replace(/-/g, ' ')
+                .replace(/\b\w/g, (c: any) => c.toUpperCase())}
             </h2>
             <p className="mx-auto my-6 max-w-2xl text-md tracking-tight text-slate-700 text-center">
               {bootcamp.description}
@@ -137,25 +146,7 @@ export default function Bootcamp({ params }: any) {
                 >
                   here
                 </span>
-              </div>
-            </div>
-            <div
-              className="flex items-center  p-4 mb-2 mt-2 text-sm text-red-800 rounded-lg bg-red-100 dark:text-red-400"
-              role="alert"
-            >
-              <svg
-                className="flex-shrink-0 inline w-4 h-4 mr-3"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-              </svg>
-              <span className="sr-only">Info</span>
-              <div>
-                {' '}
-                If there is any incorrect information, submit a notice{' '}
+                . If there is any incorrect information, submit a notice{' '}
                 <span
                   onClick={() => {
                     window.location.href = '/feedbackForm';
@@ -164,30 +155,39 @@ export default function Bootcamp({ params }: any) {
                 >
                   here
                 </span>
+                .
               </div>
             </div>
           </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-            {cards.map((card) => (
-              <div
-                key={card.name}
-                className="flex gap-x-4 rounded-xl bg-white/5 p-6 ring-1 ring-inset ring-white/10"
-              >
-                <card.icon
-                  className="h-7 w-5 flex-none text-indigo-400"
-                  aria-hidden="true"
-                />
-                <div className="text-base leading-7">
-                  <h3 className="font-semibold">{card.name}</h3>
-                  <p className="mt-2">{card.description}</p>
+          {outcomes && outcomes.length ? (
+            <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
+              {cards.map((card) => (
+                <div
+                  key={card.name}
+                  className="flex gap-x-4 rounded-xl bg-white/5 p-6 ring-1 ring-inset ring-white/10"
+                >
+                  <card.icon
+                    className="h-7 w-5 flex-none text-indigo-400"
+                    aria-hidden="true"
+                  />
+                  <div className="text-base leading-7">
+                    <h3 className="font-semibold">{card.name}</h3>
+                    <p className="mt-2">{card.description}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          ) : (
+            <ErrorBarWithActions />
+          )}
+        </div>
+        {outcomes && outcomes.length ? (
+          <div className="m-20">
+            <Table outcomes={outcomes} />
           </div>
-        </div>
-        <div className="m-20">
-          <Table outcomes={outcomes} />
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

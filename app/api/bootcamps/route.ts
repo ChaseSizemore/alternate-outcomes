@@ -7,9 +7,7 @@ import { NextApiRequest } from 'next';
 export const GET = async (req: Request, res: Response) => {
   try {
     const url = new URL(req.url as string, `http://${(req.headers as any).host}`);
-    console.log('url', url)
-    const name = url.searchParams.get('name');
-    console.log('name', name)
+    let name = url.searchParams.get('name')?.toLowerCase();
     const colRef = await collection(db, 'bootcamps');
     const q = await query(colRef, where('name', '==', name));
     const querySnapshot = await getDocs(q);
@@ -17,7 +15,6 @@ export const GET = async (req: Request, res: Response) => {
     querySnapshot.forEach((doc) => {
       data.push(doc.data());
     });
-    console.log('data', data)
     return NextResponse.json(data);
   } catch (e) {
     console.error('Error getting document: ', e);

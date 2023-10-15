@@ -36,5 +36,7 @@ async function streamToJson(stream: ReadableStream): Promise<any> {
     return formatted;
   };
 
+  
+
 
 export { streamToJson, getAverageSalary };
