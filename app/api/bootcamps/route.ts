@@ -4,9 +4,9 @@ import { getDocs, collection, query, where } from '@firebase/firestore';
 
 import { NextApiRequest } from 'next';
 
-export const GET = async (req: NextApiRequest, res: Response) => {
+export const GET = async (req: Request, res: Response) => {
   try {
-    const url = new URL(req.url as string, `http://${req.headers.host}`);
+    const url = new URL(req.url as string, `http://${(req.headers as any).host}`);
     const name = url.searchParams.get('name');
     const colRef = await collection(db, 'bootcamps');
     const q = await query(colRef, where('name', '==', name));
