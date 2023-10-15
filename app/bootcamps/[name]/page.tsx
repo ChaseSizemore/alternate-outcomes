@@ -101,7 +101,7 @@ export default function Bootcamp({ params }: any) {
     getBootcamp();
   }, []);
 
-  if (!bootcamp) {
+  if (!bootcamp || !outcomes) {
     return <div>Loading...</div>;
   } else {
     return (
