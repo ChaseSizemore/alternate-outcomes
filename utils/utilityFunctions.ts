@@ -1,3 +1,8 @@
+/**
+ * Converts a ReadableStream to a JSON object.
+ * @param {ReadableStream} stream - The ReadableStream to convert.
+ * @returns {Promise<any>} - A Promise that resolves to the JSON object.
+ */
 async function streamToJson(stream: ReadableStream): Promise<any> {
   const reader = stream.getReader();
   const decoder = new TextDecoder('utf-8');
@@ -10,5 +15,26 @@ async function streamToJson(stream: ReadableStream): Promise<any> {
   return JSON.parse(result);
 }
 
+/**
+* Calculates the average salary from an array of objects containing a salary property.
+* @param array - The array of objects to calculate the average salary from.
+* @returns A formatted string representing the average salary in USD.
+*/
 
-export { streamToJson }
+  const getAverageSalary = (array: any[]) => {
+    let total = 0;
+    array.forEach((item: any) => {
+      total += parseInt(item.salary, 10);
+    });
+    let result = Math.floor(total / array.length);
+    let formatted = result.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+    return formatted;
+  };
+
+
+export { streamToJson, getAverageSalary };

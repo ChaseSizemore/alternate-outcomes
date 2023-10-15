@@ -7,6 +7,7 @@ import {
 import { use, useEffect, useState } from 'react';
 import Table from '@/components/Table';
 import axios from 'axios';
+import { getAverageSalary } from '@/utils/utilityFunctions';
 
 export default function Bootcamp({ params }: any) {
   const [outcomes, setOutcomes] = useState([]);
@@ -41,6 +42,7 @@ export default function Bootcamp({ params }: any) {
    * @returns {Promise<void>} A Promise that resolves when the bootcamp data is fetched successfully.
    */
   const getBootcamp = async () => {
+    console.log('in bootcamp function')
     axios
       .get('/api/bootcamps', {
         params: {
@@ -49,39 +51,22 @@ export default function Bootcamp({ params }: any) {
       })
       .then((res) => {
         setBootcamp(res.data[0]);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
-    console.log(bootcamp)
-    
-  }, [bootcamp])
-
-  /**
-   * Calculates the average salary from an array of objects containing a salary property.
-   * @param array - The array of objects to calculate the average salary from.
-   * @returns A formatted string representing the average salary in USD.
-   */
-  const getAverageSalary = (array: any[]) => {
-    let total = 0;
-    array.forEach((item: any) => {
-      total += parseInt(item.salary, 10);
-    });
-    let result = Math.floor(total / array.length);
-    let formatted = result.toLocaleString('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return formatted;
-  };
+    console.log(bootcamp);
+  }, [bootcamp]);
 
   /**
    * Fetches outcomes data from the server and sets the outcomes state and average salary state.
    * @returns {Promise<void>}
    */
   const getOutcomes = async () => {
+    console.log('in outcomes function')
     axios
       .get('/api/outcomes')
       .then((res) => {
@@ -165,7 +150,9 @@ export default function Bootcamp({ params }: any) {
               {' '}
               If there is any incorrect information, submit a notice{' '}
               <span
-                onClick={() => {window.location.href = '/feedbackForm'}}
+                onClick={() => {
+                  window.location.href = '/feedbackForm';
+                }}
                 className="underline cursor-pointer"
               >
                 here
