@@ -7,6 +7,11 @@ import { Button } from '@/components/Button';
 export default function FeedbackForm() {
   const [comment, setComment] = useState<string>('');
 
+  /**
+   * Handles the form submission by sending a POST request to the feedbackForm API endpoint with the comment data.
+   * @param {Event} e - The form submission event.
+   * @returns {void}
+   */
   const handleSubmit = (e: any) => {
     e.preventDefault();
     axios.post('/api/feedbackForm', {
@@ -24,7 +29,9 @@ export default function FeedbackForm() {
           Feedback Form
         </h1>
         <p className="mt-1 text-sm leading-6 text-gray-600 mx-20">
-         Let us hear your feedback! This could be a bug report, a feature request, a missing bootcamp, or anything else you want to share with us.
+          Let us hear your feedback! This could be a bug report, a feature
+          request, a missing bootcamp, or anything else you want to share with
+          us.
         </p>
       </div>
       <form action="#" className="m-20">
@@ -54,8 +61,9 @@ export default function FeedbackForm() {
           )}
         </Tab.Group>
         <div className="mt-2 flex justify-end">
-            <Button color = 'blue' onClick={handleSubmit}>Submit</Button>
-
+          <Button color="blue" onClick={handleSubmit}>
+            Submit
+          </Button>
         </div>
       </form>
     </>

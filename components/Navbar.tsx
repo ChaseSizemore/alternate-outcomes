@@ -37,12 +37,6 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-x-5 md:gap-x-8">
             <div className="hidden md:block">
-              {/* <Link
-                href="/login"
-                className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
-              >
-                Sign in
-              </Link> */}
             </div>
             <Button href="/contribute" color="blue">
               <span>

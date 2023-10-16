@@ -35,8 +35,14 @@ export default function Home() {
 
   useEffect(() => {
     getLatest();
-    console.log('grabbing latest outcome');
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      getLatest();
+    }
+    , 10000);
+  }, [latest]);
 
   return (
     <div className="pb-16 pt-20 lg:pt-32">

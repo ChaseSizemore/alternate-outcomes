@@ -7,6 +7,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 export default function Outcomes() {
   const [outcomes, setOutcomes] = useState([]);
 
+  /**
+   * Fetches data from the '/api/outcomes' endpoint and formats the salary property of each item as a US currency string.
+   * @returns {Promise<void>} A Promise that resolves when the data is fetched and formatted.
+   */
   const getData = async () => {
     await fetch('/api/outcomes')
       .then((res) => res.json())
