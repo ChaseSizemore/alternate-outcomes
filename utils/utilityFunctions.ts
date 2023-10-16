@@ -16,27 +16,39 @@ async function streamToJson(stream: ReadableStream): Promise<any> {
 }
 
 /**
-* Calculates the average salary from an array of objects containing a salary property.
-* @param array - The array of objects to calculate the average salary from.
-* @returns A formatted string representing the average salary in USD.
-*/
+ * Calculates the average salary from an array of objects containing a salary property.
+ * @param array - The array of objects to calculate the average salary from.
+ * @returns A formatted string representing the average salary in USD.
+ */
 
-  const getAverageSalary = (array: any[]) => {
-    let total = 0;
-    array.forEach((item: any) => {
-      total += parseInt(item.salary, 10);
-    });
-    let result = Math.floor(total / array.length);
-    let formatted = result.toLocaleString('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-    return formatted;
-  };
+const getAverageSalary = (array: any[]) => {
+  let total = 0;
+  array.forEach((item: any) => {
+    total += parseInt(item.salary, 10);
+  });
+  let result = Math.floor(total / array.length);
+  let formatted = result.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+  return formatted;
+};
 
-  
+/**
+ * Opens the bootcamp website in a new tab when clicked.
+ * @returns {void}
+ */
 
+type Bootcamp = {
+  website: string;
+  description: string;
+  averageSalary: string;
+  name: string;
+};
+const handleWebsiteClick = (bootcamp: Bootcamp) => {
+  window.open(bootcamp.website, '_blank');
+};
 
-export { streamToJson, getAverageSalary };
+export { streamToJson, getAverageSalary, handleWebsiteClick };

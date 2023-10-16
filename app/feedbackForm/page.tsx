@@ -9,7 +9,6 @@ export default function FeedbackForm() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log(comment);
     axios.post('/api/feedbackForm', {
       comment: comment,
     });

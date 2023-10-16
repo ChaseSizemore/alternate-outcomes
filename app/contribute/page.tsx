@@ -62,13 +62,6 @@ export default function Contribute() {
       .catch((err) => {
         console.log(err);
       });
-    // axios.post('/api/bootcamps', requestBody)
-    // .then((res) => {
-    //   console.log(res);
-    // })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
   };
 
   const handleSalaryChange = (e: any) => {

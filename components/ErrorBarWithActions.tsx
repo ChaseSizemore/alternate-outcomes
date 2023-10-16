@@ -1,16 +1,15 @@
-import { CheckCircleIcon } from '@heroicons/react/20/solid'
+import { ExclamationCircleIcon } from '@heroicons/react/20/solid'
 
 export default function ErrorBarWithActions() {
   return (
     <div className="rounded-md bg-red-50 p-4 mt-10">
-      <div className="flex">
+      <div className="flex items-center">
         <div className="flex-shrink-0">
-          <CheckCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
+          <ExclamationCircleIcon className="h-5 w-5 text-red-400" aria-hidden="true" />
         </div>
         <div className="ml-3">
-          <h3 className="text-sm font-medium text-red-800">Outcomes Error</h3>
           <div className="mt-2 text-sm text-red-700">
-            <p>There is no submissions on this bootcamp!</p>
+            <p>There are nosubmissions on this bootcamp!</p>
           </div>
           <div className="mt-4">
             <div className="-mx-2 -my-1.5 flex">

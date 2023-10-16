@@ -30,10 +30,6 @@ export default function Outcomes() {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(outcomes);
-  }, [outcomes]);
-
   if (!outcomes || outcomes.length === 0) {
     return <LinearProgress />;
   } else {

@@ -1,36 +1,25 @@
 'use client';
 import {
   AcademicCapIcon,
-  BanknotesIcon,
-  CheckBadgeIcon,
-  ClockIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
+  BuildingLibraryIcon,
+  BuildingOffice2Icon,
+  BuildingOfficeIcon,
+  BuildingStorefrontIcon,
+  HomeModernIcon,
 } from '@heroicons/react/24/outline';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import LinearProgress from '@mui/material/LinearProgress';
 
-const actions = [
-  {
-    title: 'Request time off',
-    href: '#',
-    icon: AcademicCapIcon,
-    iconForeground: 'text-teal-700',
-    iconBackground: 'bg-teal-50',
-  },
+const icons = [
+  <AcademicCapIcon className="h-6 w-6" aria-hidden="true" />,
+  <BuildingLibraryIcon className="h-6 w-6" aria-hidden="true" />,
+  <BuildingOffice2Icon className="h-6 w-6" aria-hidden="true" />,
+  <BuildingOfficeIcon className="h-6 w-6" aria-hidden="true" />,
+  <BuildingStorefrontIcon className="h-6 w-6" aria-hidden="true" />,
+  <HomeModernIcon className="h-6 w-6" aria-hidden="true" />,
 ];
-
-/**
- * Returns a string of concatenated class names with spaces between them.
- * @param classes - An array of class names to concatenate.
- * @returns A string of concatenated class names.
- */
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export default function Bootcamps() {
   const [bootcamps, setBootcamps] = useState<{ [key: string]: any[] }>();
@@ -64,44 +53,26 @@ export default function Bootcamps() {
   } else {
     return (
       <div className="divide-y m-20 divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-        {actions.map((action, actionIdx) => (
+        {Object.values(bootcamps).map((bootcamp, key) => (
           <div
-            key={action.title}
-            className={classNames(
-              actionIdx === 0
-                ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
-                : '',
-              actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
-              actionIdx === actions.length - 2 ? 'sm:rounded-bl-lg' : '',
-              actionIdx === actions.length - 1
-                ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
-                : '',
-              'group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
-            )}
+            onClick={() => {window.location.href = `/bootcamps/${bootcamp[0].bootcamp.toLowerCase().replace(/ /g, '-')}`}}
+            key={key} 
+            className="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
           >
             <div>
-              <span
-                className={classNames(
-                  action.iconBackground,
-                  action.iconForeground,
-                  'inline-flex rounded-lg p-3 ring-4 ring-white'
-                )}
-              >
-                <action.icon className="h-6 w-6" aria-hidden="true" />
+              <span className="inline-flex rounded-lg p-3 ring-4 ring-white bg-teal-50 text-teal-700">
+                {icons[key % icons.length]}
               </span>
             </div>
             <div className="mt-8">
               <h3 className="text-base font-semibold leading-6 text-gray-900">
-                <a href={action.href} className="focus:outline-none">
-                  {/* Extend touch target to entire panel */}
+                <a  className="focus:outline-none">
                   <span className="absolute inset-0" aria-hidden="true" />
-                  {action.title}
+                  {bootcamp[0].bootcamp}
                 </a>
               </h3>
               <p className="mt-2 text-sm text-gray-500">
-                Doloribus dolores nostrum quia qui natus officia quod et
-                dolorem. Sit repellendus qui ut at blanditiis et quo et
-                molestiae.
+                Entries: {bootcamp.length}
               </p>
             </div>
             <span
