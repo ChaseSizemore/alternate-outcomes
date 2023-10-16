@@ -38,6 +38,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    console.log(latest)
     setTimeout(() => {
       getLatest();
     }
