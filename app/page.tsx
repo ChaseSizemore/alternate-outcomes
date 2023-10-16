@@ -37,14 +37,6 @@ export default function Home() {
     getLatest();
   }, []);
 
-  useEffect(() => {
-    console.log(latest)
-    setTimeout(() => {
-      getLatest();
-    }
-    , 10000);
-  }, [latest]);
-
   return (
     <div className="pb-16 pt-20 lg:pt-32">
       <div className="text-center">
