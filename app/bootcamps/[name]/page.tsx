@@ -15,8 +15,8 @@ export default function Bootcamp({ params }: any) {
   const [outcomes, setOutcomes] = useState<any[] | null>(null);
   const [bootcamp, setBootcamp] = useState<any>(null);
   const [averageSalary, setAverageSalary] = useState('');
-  const [recentCompanies, setRecentCompanies] = useState([]);
-  const [recentLocations, setRecentLocations] = useState([]);
+  const [recentCompanies, setRecentCompanies] = useState<any>([]);
+  const [recentLocations, setRecentLocations] = useState<any>([]);
 
   const cards = [
     {
@@ -72,8 +72,8 @@ export default function Bootcamp({ params }: any) {
             bootcamp.push(item);
           }
         });
-        setOutcomes(bootcamp);
-        setAverageSalary(getAverageSalary(bootcamp));
+        setOutcomes(bootcamp as any[]);
+        setAverageSalary(getAverageSalary(bootcamp as any[]));
         setRecentCompanies(
           Array.from(new Set(bootcamp.map((item: any) => item.company))).slice(
             0,
