@@ -8,9 +8,9 @@ import {
   HomeModernIcon,
 } from '@heroicons/react/24/outline';
 
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import LinearProgress from '@mui/material/LinearProgress';
+import { useBootcamps } from '@/hooks/getBootcamps';
+import { useEffect } from 'react';
 
 const icons = [
   <AcademicCapIcon className="h-6 w-6" aria-hidden="true" />,
@@ -22,41 +22,21 @@ const icons = [
 ];
 
 export default function Bootcamps() {
-  const [bootcamps, setBootcamps] = useState<{ [key: string]: any[] }>();
-
-  const getBootcamps = async () => {
-    axios
-      .get('/api/outcomes')
-      .then((res) => {
-        const store: { [key: string]: any[] } = {};
-        const bootcamps = res.data;
-        bootcamps.forEach((bootcamp: any) => {
-          if (!store[bootcamp.bootcamp]) {
-            store[bootcamp.bootcamp] = [];
-          }
-          store[bootcamp.bootcamp].push(bootcamp);
-        });
-        setBootcamps(store);
-        console.log(store);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    getBootcamps();
-  }, []);
+  const bootcamps = useBootcamps();
 
   if (!bootcamps) {
     return <LinearProgress />;
   } else {
     return (
-      <div className="divide-y m-20 divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
+      <div className="cursor-pointer divide-y m-20 divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
         {Object.values(bootcamps).map((bootcamp, key) => (
           <div
-            onClick={() => {window.location.href = `/bootcamps/${bootcamp[0].bootcamp.toLowerCase().replace(/ /g, '-')}`}}
-            key={key} 
+            onClick={() => {
+              window.location.href = `/bootcamps/${bootcamp[0].bootcamp
+                .toLowerCase()
+                .replace(/ /g, '-')}`;
+            }}
+            key={key}
             className="group relative bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
           >
             <div>
@@ -66,7 +46,7 @@ export default function Bootcamps() {
             </div>
             <div className="mt-8">
               <h3 className="text-base font-semibold leading-6 text-gray-900">
-                <a  className="focus:outline-none">
+                <a className="focus:outline-none">
                   <span className="absolute inset-0" aria-hidden="true" />
                   {bootcamp[0].bootcamp}
                 </a>

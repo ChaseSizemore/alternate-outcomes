@@ -1,3 +1,14 @@
+/**
+ * An array of objects representing dummy outcomes data.
+ * @typedef {Object} Outcome
+ * @property {string} bootcamp - The name of the bootcamp.
+ * @property {string} location - The location of the job.
+ * @property {string} company - The name of the company.
+ * @property {string} position - The job position.
+ * @property {string} salary - The salary of the job.
+ * @property {string} YOE - The years of experience required for the job.
+ * @property {string} createdAt - The date the job was created.
+ */
 const dummyData = [
   {
     bootcamp: 'CodeSmith',

@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import clsx from 'clsx'
+import Link from 'next/link';
+import clsx from 'clsx';
 
 const baseStyles = {
   solid:
     'group inline-flex items-center justify-center rounded-full py-2 px-4 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2',
   outline:
     'group inline-flex ring-1 items-center justify-center rounded-full py-2 px-4 text-sm focus:outline-none',
-}
+};
 
 const variantStyles = {
   solid: {
@@ -15,10 +15,7 @@ const variantStyles = {
     blue: 'bg-blue-600 text-white hover:text-slate-100 hover:bg-blue-500 active:bg-blue-800 active:text-blue-100 focus-visible:outline-blue-600',
     white:
       'bg-white text-slate-900 hover:bg-blue-50 active:bg-blue-200 active:text-slate-600 focus-visible:outline-white',
-    red:
-    'bg-red-600 text-white hover:text-slate-100 hover:bg-red-500 active:bg-red-800 active:text-red-100 focus-visible:outline-red-600',
-    
-
+    red: 'bg-red-600 text-white hover:text-slate-100 hover:bg-red-500 active:bg-red-800 active:text-red-100 focus-visible:outline-red-600',
   },
   outline: {
     slate:
@@ -26,41 +23,41 @@ const variantStyles = {
     white:
       'ring-slate-700 text-white hover:ring-slate-500 active:ring-slate-700 active:text-slate-400 focus-visible:outline-white',
   },
-}
+};
 
-type VariantKey = keyof typeof variantStyles
+type VariantKey = keyof typeof variantStyles;
 type ColorKey<Variant extends VariantKey> =
-  keyof (typeof variantStyles)[Variant]
+  keyof (typeof variantStyles)[Variant];
 
 type ButtonProps<
   Variant extends VariantKey,
-  Color extends ColorKey<Variant>,
+  Color extends ColorKey<Variant>
 > = {
-  variant?: Variant
-  color?: Color
+  variant?: Variant;
+  color?: Color;
 } & (
   | Omit<React.ComponentPropsWithoutRef<typeof Link>, 'color'>
   | (Omit<React.ComponentPropsWithoutRef<'button'>, 'color'> & {
-      href?: undefined
+      href?: undefined;
     })
-)
+);
 
 export function Button<
   Color extends ColorKey<Variant>,
-  Variant extends VariantKey = 'solid',
+  Variant extends VariantKey = 'solid'
 >({ variant, color, className, ...props }: ButtonProps<Variant, Color>) {
-  variant = variant ?? ('solid' as Variant)
-  color = color ?? ('slate' as Color)
+  variant = variant ?? ('solid' as Variant);
+  color = color ?? ('slate' as Color);
 
   className = clsx(
     baseStyles[variant],
     variantStyles[variant][color] as string,
-    className as string,
-  )
+    className as string
+  );
 
   return typeof props.href === 'undefined' ? (
     <button className={className} {...props} />
   ) : (
     <Link className={className} {...props} />
-  )
+  );
 }

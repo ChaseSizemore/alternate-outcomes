@@ -13,7 +13,7 @@ import Box from '@mui/material/Box';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { visuallyHidden } from '@mui/utils';
 
-import dummyData from '@/utils/dummyOutcomes';
+// import dummyData from '@/utils/dummyOutcomes';
 
 interface Column {
   id: 'bootcamp' | 'company' | 'position' | 'salary' | 'YOE';

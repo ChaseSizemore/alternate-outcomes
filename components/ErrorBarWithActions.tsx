@@ -1,5 +1,10 @@
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
 
+/**
+ * Renders an error bar with actions to add a submission or go back to the previous page.
+ * Error appears on /bootcamps/[name] route when there is no data on the bootcamp
+ * @returns JSX.Element
+ */
 export default function ErrorBarWithActions() {
   return (
     <div className="rounded-md bg-red-50 p-4 mt-10">
@@ -16,10 +21,22 @@ export default function ErrorBarWithActions() {
           </div>
           <div className="mt-4">
             <div className="-mx-2 -my-1.5 flex">
-              <button onClick={() => {window.location.href = '/contribute'}} type="button" className="rounded-md bg-red-50 px-2 py-1.5 text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50">
+              <button
+                onClick={() => {
+                  window.location.href = '/contribute';
+                }}
+                type="button"
+                className="rounded-md bg-red-50 px-2 py-1.5 text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50"
+              >
                 Add a submission
               </button>
-              <button onClick={() => {window.location.href = '/'}} type="button" className="ml-3 rounded-md bg-red-50 px-2 py-1.5 text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50">
+              <button
+                onClick={() => {
+                  window.location.href = '/';
+                }}
+                type="button"
+                className="ml-3 rounded-md bg-red-50 px-2 py-1.5 text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50"
+              >
                 Go Back
               </button>
             </div>

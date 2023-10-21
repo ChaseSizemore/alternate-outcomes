@@ -3,42 +3,14 @@ import Image from 'next/image';
 import { Button } from '@/components/Button';
 import { useEffect, useState } from 'react';
 import Latest from '@/components/Latest';
-import { InformationCircleIcon } from '@heroicons/react/20/solid'
+import { InformationCircleIcon } from '@heroicons/react/20/solid';
+import { useLatest } from '@/hooks/getLatest';
 
 export default function Home() {
-  const [latest, setLatest] = useState({
-    bootcamp: '',
-    company: '',
-    position: '',
-    salary: '',
-    location: '',
-    date: '',
-  });
-  const getLatest = async () => {
-    await fetch('/api/latestOutcome')
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setLatest(data);
-      })
-      .catch((error) => {
-        console.error(
-          'There was a problem with the fetch operation:',
-          error.message
-        );
-      });
-  };
-
-  useEffect(() => {
-    getLatest();
-  }, []);
+  const latest = useLatest();
 
   return (
-    <div className="pb-16 pt-20 lg:pt-32">
+    <main className="pb-16 pt-20 lg:pt-32">
       <div className="text-center">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
           Bootcamp Outcomes{' '}
@@ -88,6 +60,6 @@ export default function Home() {
         </div>
         <Latest latest={latest} />
       </div>
-    </div>
+    </main>
   );
 }

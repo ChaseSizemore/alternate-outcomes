@@ -4,35 +4,10 @@ import { use, useEffect, useState } from 'react';
 import Table from '@/components/Table';
 import LinearProgress from '@mui/material/LinearProgress';
 
+import { useOutcomes } from '@/hooks/getOutcomes';
+
 export default function Outcomes() {
-  const [outcomes, setOutcomes] = useState([]);
-
-  /**
-   * Fetches data from the '/api/outcomes' endpoint and formats the salary property of each item as a US currency string.
-   * @returns {Promise<void>} A Promise that resolves when the data is fetched and formatted.
-   */
-  const getData = async () => {
-    await fetch('/api/outcomes')
-      .then((res) => res.json())
-      .then((data) => {
-        const formattedData = data.map((item: any) => {
-          return {
-            ...item,
-            salary: parseInt(item.salary, 10).toLocaleString('en-US', {
-              style: 'currency',
-              currency: 'USD',
-              minimumFractionDigits: 0,
-              maximumFractionDigits: 0,
-            }),
-          };
-        });
-        setOutcomes(formattedData);
-      });
-  };
-
-  useEffect(() => {
-    getData();
-  }, []);
+  const outcomes = useOutcomes();
 
   if (!outcomes || outcomes.length === 0) {
     return <LinearProgress />;
@@ -49,7 +24,7 @@ export default function Outcomes() {
             </p>
           </div>
         </div>
-        <div className="mx-20">
+        <div className="md:mx-20">
           <Table outcomes={outcomes} />
         </div>
       </>

@@ -1,9 +1,18 @@
+/**
+ * This file contains the arrays of states and bootcamps that are used in the form select elements.
+ * use in the feedback route.
+ * 
+ */
+
+
+// Array of states for the form select element
 const states: string[] = ['Remote','AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL',
 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI',
 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH',
 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 
 'WI', 'WY']
 
+// Array of bootcamps for the form select element
 const bootcamps: string[] = ["10x Academy", "4Geeks Academy", "Academia de Código", "Actualize", "Altcademy", 
 "App Academy",  "Bloom Institute of Technology", "BrainStation", "CareerFoundry", "Clarusway", "Code Fellows", 
 "Code Platoon", "Coder Foundry", "Codesmith", "Coding Dojo", "Fullstack Academy", "Galvanize", "General Assembly", 

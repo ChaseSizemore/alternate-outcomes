@@ -15,8 +15,8 @@ export default function Bootcamp({ params }: any) {
   const [outcomes, setOutcomes] = useState<any[] | null>(null);
   const [bootcamp, setBootcamp] = useState<any>(null);
   const [averageSalary, setAverageSalary] = useState('');
-  const [companies, setCompanies] = useState<any[]>([]);
-  const [locations, setLocations] = useState<any[]>([]);
+  const [recentCompanies, setRecentCompanies] = useState([]);
+  const [recentLocations, setRecentLocations] = useState([]);
 
   const cards = [
     {
@@ -25,15 +25,13 @@ export default function Bootcamp({ params }: any) {
       description: `${averageSalary}`,
     },
     {
-      name: 'Top Companies',
-      description:
-        'Quod possimus sit modi rerum exercitationem quaerat atque tenetur ullam.',
+      name: 'Recent Companies',
+      description: `${recentCompanies.join(', ')}`,
       icon: BuildingOffice2Icon,
     },
     {
       name: 'Locations ',
-      description:
-        'Ratione et porro eligendi est sed ratione rerum itaque. Placeat accusantium impedit eum odit.',
+      description: `${recentLocations.join(', ')}`,
       icon: MapIcon,
     },
   ];
@@ -76,6 +74,18 @@ export default function Bootcamp({ params }: any) {
         });
         setOutcomes(bootcamp);
         setAverageSalary(getAverageSalary(bootcamp));
+        setRecentCompanies(
+          Array.from(new Set(bootcamp.map((item: any) => item.company))).slice(
+            0,
+            3
+          )
+        );
+        setRecentLocations(
+          Array.from(new Set(bootcamp.map((item: any) => item.location))).slice(
+            0,
+            3
+          )
+        );
       })
       .catch((err) => {
         console.log(err);
@@ -163,7 +173,7 @@ export default function Bootcamp({ params }: any) {
           )}
         </div>
         {outcomes && outcomes.length ? (
-          <div className="m-20">
+          <div className="md:mx-20 my-20">
             <Table outcomes={outcomes} />
           </div>
         ) : (
