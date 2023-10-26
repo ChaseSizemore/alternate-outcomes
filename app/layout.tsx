@@ -20,7 +20,7 @@ const lexend = Lexend({
 });
 
 export const metadata: Metadata = {
-  title: 'Bootcamp Outcomes',
+  title: 'Alternate Outcomes',
   description:
     'View outcomes of bootcamp graduates before deciding on a bootcamp yourself!',
 };
