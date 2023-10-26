@@ -13,17 +13,18 @@ export default function Home() {
     <main className="pb-16 pt-20 lg:pt-32">
       <div className="text-center">
         <h1 className="mx-auto max-w-4xl font-display text-5xl font-medium tracking-tight text-slate-900 sm:text-7xl">
-          Bootcamp Outcomes{' '}
+          Alternate Outcomes{' '}
           <span className="relative whitespace-nowrap text-blue-600">
             <span className="relative">made simple</span>
           </span>{' '}
           for future Software Engineers.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg tracking-tight text-slate-700">
-          Bootcamps are a great choice for those who don't have the time to go
-          back to school for a CS degree. However, it can be difficult to find
-          the right. Bootcamp Outcomes is here to help you find the right
-          bootcamp for you!
+          Bootcamps and self teaching can be a great choice for those who don't
+          have the time to go back to school for a CS degree. However, it can be
+          difficult to make the right choice. This site aims to help you make
+          the right choice by providing you with the outcomes of bootcamp
+          graduates and self taught developers.
         </p>
         <div
           className="flex items-center mx-auto max-w-2xl p-4 mb-2 mt-2 text-sm text-blue-800 borde rounded-lg bg-blue-50 dark:text-blue-400 dark:border-blue-800"

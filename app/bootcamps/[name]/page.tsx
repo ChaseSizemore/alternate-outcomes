@@ -99,7 +99,7 @@ export default function Bootcamp({ params }: any) {
 
   if (!bootcamp || !outcomes) {
     return <LinearProgress />;
-  } else {
+  }  else {
     return (
       <div className="relative isolate overflow-hidden py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px- item flex flex-col justify-center items-center">

@@ -17,7 +17,7 @@ export default function ErrorBarWithActions() {
         </div>
         <div className="ml-3">
           <div className="mt-2 text-sm text-red-700">
-            <p>There are nosubmissions on this bootcamp!</p>
+            <p>Theres no descirption on this bootcamp!</p>
           </div>
           <div className="mt-4">
             <div className="-mx-2 -my-1.5 flex">
