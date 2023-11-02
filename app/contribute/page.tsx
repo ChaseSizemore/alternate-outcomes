@@ -32,14 +32,10 @@ export default function Contribute() {
   const cancelButtonRef = useRef(null);
 
   const handleSubmit = (e: any) => {
-    if (
-      salaryError ||
-      YOEError ||
-      positionError ||
-      companyError ||
-      locationError ||
-      bootcampError
-    ) {
+    const hasErrors = salaryError || YOEError || positionError || companyError || locationError || bootcampError;
+    const hasEmptyValues = !bootcamp || !location || !company || !position || !salary || !YOE;
+    
+    if (hasErrors || hasEmptyValues) {
       setOpen(true);
       return;
     }

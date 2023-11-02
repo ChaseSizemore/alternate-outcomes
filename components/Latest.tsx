@@ -3,7 +3,7 @@ interface InfoItemProps {
   value: string;
 }
 
-function InfoItem({ title, value }: InfoItemProps) {
+export function InfoItem({ title, value }: InfoItemProps) {
   return (
     <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 px-4 py-10 sm:px-6 xl:px-8">
       <dt className="text-sm font-medium leading-6 text-gray-500">{title}</dt>
@@ -36,3 +36,4 @@ export default function Example({ latest }: any) {
     </dl>
   );
 }
+
