@@ -15,6 +15,4 @@ A website where Software Engineers with background besides CS degrees can self-r
     - Change state to useReducers
     - Potentially add useRef
     - Add more options
-    - Prevent empty string submission
 - Bug fix Latest component not fetch latest on deployed but working on local
-- Feeback form rerouting on submission

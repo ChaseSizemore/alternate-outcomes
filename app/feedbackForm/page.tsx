@@ -3,9 +3,11 @@ import { Tab } from '@headlessui/react';
 import { useState } from 'react';
 import axios from 'axios';
 import { Button } from '@/components/Button';
+import Modal from '@/components/Modal';
 
 export default function FeedbackForm() {
   const [comment, setComment] = useState<string>('');
+  const [open, setOpen] = useState<boolean>(false);
 
   /**
    * Handles the form submission by sending a POST request to the feedbackForm API endpoint with the comment data.
@@ -14,9 +16,18 @@ export default function FeedbackForm() {
    */
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    axios.post('/api/feedbackForm', {
-      comment: comment,
-    });
+    axios
+      .post('/api/feedbackForm', {
+        comment: comment,
+      })
+      .then((res) => {
+        if (res.status === 200 || res.status === 304) {
+          setOpen(true);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -66,6 +77,7 @@ export default function FeedbackForm() {
           </Button>
         </div>
       </form>
+      <Modal  open={open} setOpen={setOpen} icon = {'success'} title = {'feedback'} message = {"Thank you for submitting feedback! We'll check on it as soon as possible!"}/>
     </>
   );
 }
