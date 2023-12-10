@@ -9,7 +9,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import LinearProgress from '@mui/material/LinearProgress';
-import { useBootcamps } from '@/hooks/getBootcamps';
+import { useBootcamps } from '@/app/hooks/getBootcamps';
 import { useEffect } from 'react';
 
 const icons = [

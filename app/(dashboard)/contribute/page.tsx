@@ -1,6 +1,6 @@
 'use client';
 
-import { states, bootcamps } from '@/utils/formSelects';
+import { states, bootcamps } from '@/app/utils/formSelects';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -13,7 +13,7 @@ import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
-import Modal from '@/components/Modal';
+import Modal from '@/app/components/Modal';
 
 export default function Contribute() {
   const [bootcamp, setBootcamp] = useState('');
@@ -33,9 +33,16 @@ export default function Contribute() {
   const [open, setOpen] = useState(false);
 
   const handleSubmit = (e: any) => {
-    const hasErrors = salaryError || YOEError || positionError || companyError || locationError || bootcampError;
-    const hasEmptyValues = !bootcamp || !location || !company || !position || !salary || !YOE;
-    
+    const hasErrors =
+      salaryError ||
+      YOEError ||
+      positionError ||
+      companyError ||
+      locationError ||
+      bootcampError;
+    const hasEmptyValues =
+      !bootcamp || !location || !company || !position || !salary || !YOE;
+
     if (hasErrors || hasEmptyValues) {
       setOpen(true);
       return;
@@ -200,14 +207,25 @@ export default function Contribute() {
           <Button variant="outlined" onClick={handleSubmit}>
             Submit
           </Button>
-          <Button variant="text" onClick={() => {window.location.reload()}}>
+          <Button
+            variant="text"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
             Reset
           </Button>
         </div>
       </Box>
-      <Modal  open={open} setOpen={setOpen} icon = {'error'} title = {'error'} message = {"There appears to be an error! Please resolve all field errors before submitting again."} />
-
-
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        icon={'error'}
+        title={'error'}
+        message={
+          'There appears to be an error! Please resolve all field errors before submitting again.'
+        }
+      />
     </div>
   );
 }

@@ -2,8 +2,8 @@
 import { Tab } from '@headlessui/react';
 import { useState } from 'react';
 import axios from 'axios';
-import { Button } from '@/components/Button';
-import Modal from '@/components/Modal';
+import { Button } from '@/app/components/Button';
+import Modal from '@/app/components/Modal';
 
 export default function FeedbackForm() {
   const [comment, setComment] = useState<string>('');
@@ -77,7 +77,15 @@ export default function FeedbackForm() {
           </Button>
         </div>
       </form>
-      <Modal  open={open} setOpen={setOpen} icon = {'success'} title = {'feedback'} message = {"Thank you for submitting feedback! We'll check on it as soon as possible!"}/>
+      <Modal
+        open={open}
+        setOpen={setOpen}
+        icon={'success'}
+        title={'feedback'}
+        message={
+          "Thank you for submitting feedback! We'll check on it as soon as possible!"
+        }
+      />
     </>
   );
 }

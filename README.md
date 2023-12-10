@@ -16,3 +16,4 @@ A website where Software Engineers with background besides CS degrees can self-r
     - Potentially add useRef
     - Add more options
 - Bug fix Latest component not fetch latest on deployed but working on local
+- AI Chatbot to ask about data

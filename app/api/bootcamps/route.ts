@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/utils/firestore';
+import { db } from '@/app/utils/firestore';
 import { getDocs, collection, query, where } from '@firebase/firestore';
 
 import { NextApiRequest } from 'next';
 
 export const GET = async (req: Request, res: Response) => {
   try {
-    const url = new URL(req.url as string, `http://${(req.headers as any).host}`);
+    const url = new URL(
+      req.url as string,
+      `http://${(req.headers as any).host}`
+    );
     let name = url.searchParams.get('name')?.toLowerCase();
     const colRef = await collection(db, 'bootcamps');
     const q = await query(colRef, where('name', '==', name));

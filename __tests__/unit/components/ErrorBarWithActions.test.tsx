@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import ErrorBarWithActions from '@/components/ErrorBarWithActions';
-import { goToContributePage, goToHomePage } from '@/utils/windowRelocation';
+import ErrorBarWithActions from '@/app/components/ErrorBarWithActions';
+import { goToContributePage, goToHomePage } from '@/app/utils/windowRelocation';
 
 jest.mock('../../../utils/windowRelocation', () => ({
   goToContributePage: jest.fn(),

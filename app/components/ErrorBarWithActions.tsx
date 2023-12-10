@@ -1,5 +1,5 @@
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
-import { goToContributePage, goToHomePage } from '@/utils/windowRelocation';
+import { goToContributePage, goToHomePage } from '@/app/utils/windowRelocation';
 
 /**
  * Renders an error bar with actions to add a submission or go back to the previous page.

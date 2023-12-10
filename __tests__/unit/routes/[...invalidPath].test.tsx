@@ -1,4 +1,4 @@
-import _404Page from '@/app/[...invalidPath]/page';
+import _404Page from '@/app/(dashboard)/[...invalidPath]/page';
 import { fireEvent, getByRole, getByTestId, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { createMemoryHistory } from 'history';

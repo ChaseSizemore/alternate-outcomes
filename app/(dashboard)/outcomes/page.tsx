@@ -1,11 +1,11 @@
 'use client';
 
 import { use, useEffect, useState } from 'react';
-import Table from '@/components/Table';
+import Table from '@/app/components/Table';
 import LinearProgress from '@mui/material/LinearProgress';
-import dummyData from '@/utils/dummyOutcomes';
+import dummyData from '@/app/utils/dummyOutcomes';
 
-import { useOutcomes } from '@/hooks/getOutcomes';
+import { useOutcomes } from '@/app/hooks/getOutcomes';
 
 export default function Outcomes() {
   const outcomes = useOutcomes();

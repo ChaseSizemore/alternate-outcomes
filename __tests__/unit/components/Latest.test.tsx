@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Latest from '@/components/Latest';
+import Latest from '@/app/components/Latest';
 
 describe('Latest Component', () => {
   it('renders without crashing', () => {

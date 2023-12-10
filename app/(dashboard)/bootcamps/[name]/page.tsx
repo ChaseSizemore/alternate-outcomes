@@ -5,10 +5,13 @@ import {
   CurrencyDollarIcon,
 } from '@heroicons/react/20/solid';
 import { use, useEffect, useState } from 'react';
-import Table from '@/components/Table';
+import Table from '@/app/components/Table';
 import axios from 'axios';
-import { getAverageSalary, handleWebsiteClick } from '@/utils/utilityFunctions';
-import ErrorBarWithActions from '@/components/ErrorBarWithActions';
+import {
+  getAverageSalary,
+  handleWebsiteClick,
+} from '@/app/utils/utilityFunctions';
+import ErrorBarWithActions from '@/app/components/ErrorBarWithActions';
 import LinearProgress from '@mui/material/LinearProgress';
 
 export default function Bootcamp({ params }: any) {
@@ -99,7 +102,7 @@ export default function Bootcamp({ params }: any) {
 
   if (!bootcamp || !outcomes) {
     return <LinearProgress />;
-  }  else {
+  } else {
     return (
       <div className="relative isolate overflow-hidden py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px- item flex flex-col justify-center items-center">

@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
-import { Button } from '@/components/Button';
+import { Button } from '@/app/components/Button';
 import { useEffect, useState } from 'react';
-import Latest from '@/components/Latest';
+import Latest from '@/app/components/Latest';
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
-import { useLatest } from '@/hooks/getLatest';
+import { useLatest } from '@/app/hooks/getLatest';
 
 export default function Home() {
   const latest = useLatest();

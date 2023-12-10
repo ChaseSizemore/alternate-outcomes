@@ -1,7 +1,7 @@
-import { db } from '@/utils/firestore';
+import { db } from '@/app/utils/firestore';
 import { collection, addDoc } from '@firebase/firestore';
 import { NextResponse } from 'next/server';
-import { streamToJson } from '@/utils/utilityFunctions';
+import { streamToJson } from '@/app/utils/utilityFunctions';
 
 /**
  * Handles POST requests to the feedback form endpoint. Called from feedbackForm route/page.

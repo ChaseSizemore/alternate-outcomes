@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/utils/firestore';
+import { db } from '@/app/utils/firestore';
 import { getDocs, collection, addDoc, doc } from '@firebase/firestore';
-import { streamToJson } from '@/utils/utilityFunctions';
+import { streamToJson } from '@/app/utils/utilityFunctions';
 
 export const GET = async (req: Request, res: Response) => {
   try {
@@ -24,7 +24,7 @@ export const POST = async (req: Request, res: Response) => {
     }
     const data = await streamToJson(req.body);
     data.createdAt = new Date().toISOString();
-    
+
     const docRef = await addDoc(collection(db, 'outcomes'), data);
     return NextResponse.json({ message: 'success' }, { status: 200 });
   } catch (e) {
