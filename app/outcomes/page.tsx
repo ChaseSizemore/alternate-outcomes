@@ -3,6 +3,7 @@
 import { use, useEffect, useState } from 'react';
 import Table from '@/components/Table';
 import LinearProgress from '@mui/material/LinearProgress';
+import dummyData from '@/utils/dummyOutcomes';
 
 import { useOutcomes } from '@/hooks/getOutcomes';
 
@@ -25,7 +26,8 @@ export default function Outcomes() {
           </div>
         </div>
         <div className="md:mx-20">
-          <Table outcomes={outcomes} />
+          {/* <Table outcomes={outcomes} /> */}
+          <Table outcomes={dummyData} />
         </div>
       </>
     );

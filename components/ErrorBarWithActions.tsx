@@ -1,4 +1,5 @@
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
+import { goToContributePage, goToHomePage } from '@/utils/windowRelocation';
 
 /**
  * Renders an error bar with actions to add a submission or go back to the previous page.
@@ -23,7 +24,7 @@ export default function ErrorBarWithActions() {
             <div className="-mx-2 -my-1.5 flex">
               <button
                 onClick={() => {
-                  window.location.href = '/contribute';
+                  goToContributePage();
                 }}
                 type="button"
                 className="rounded-md bg-red-50 px-2 py-1.5 text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50"
@@ -32,7 +33,7 @@ export default function ErrorBarWithActions() {
               </button>
               <button
                 onClick={() => {
-                  window.location.href = '/';
+                  goToHomePage();
                 }}
                 type="button"
                 className="ml-3 rounded-md bg-red-50 px-2 py-1.5 text-sm font-medium text-red-800 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-offset-2 focus:ring-offset-red-50"

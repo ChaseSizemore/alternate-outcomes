@@ -14,7 +14,7 @@ export function InfoItem({ title, value }: InfoItemProps) {
   );
 }
 
-export default function Example({ latest }: any) {
+export default function Latest({ latest }: any) {
   return (
     <dl className="mx-3/4 grid grid-cols-1 gap-px  sm:grid-cols-2 lg:grid-cols-4">
       <InfoItem title="Bootcamp" value={latest.bootcamp} />
